@@ -343,7 +343,9 @@
             NEWSAPI: 'aaf83dcbd8694668ad89247b959db678',
             GNEWS: '42dd93284a0abf72a9a646d3b4a9c33e'
         };
-        const CORS_PROXY = 'https://corsproxy.io/?';
+        
+        // ✅ PROXY CORS GRATUITO ACTUALIZADO
+        const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
         
         // FILTRO MEJORADO - Keywords específicos para gatos
         const catKeywords = {
@@ -561,16 +563,21 @@
             return true;
         }
 
+        // ✅ GNEWS CON PROXY CORS
         async function fetchFromGNews(lang, page) {
             try {
                 const query = lang === 'es' ? 'gato OR felino' : 'cat OR feline';
                 const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=${lang}&page=${page}&max=10&apikey=${API_KEYS.GNEWS}`;
-                const res = await fetch(url);
+                const res = await fetch(CORS_PROXY + encodeURIComponent(url));
                 const data = await res.json();
                 return data.articles?.map(art => ({ ...art, urlToImage: art.image })) || [];
-            } catch (e) { return []; }
+            } catch (e) { 
+                console.error('Error GNews:', e);
+                return []; 
+            }
         }
 
+        // ✅ NEWSAPI CON PROXY CORS
         async function fetchFromNewsAPI(lang, page) {
             try {
                 const query = lang === 'es' ? 'gato OR gatito' : 'cat OR kitten';
@@ -578,7 +585,10 @@
                 const res = await fetch(CORS_PROXY + encodeURIComponent(url));
                 const data = await res.json();
                 return data.articles || [];
-            } catch (e) { return []; }
+            } catch (e) { 
+                console.error('Error NewsAPI:', e);
+                return []; 
+            }
         }
 
         async function fetchAllNews(lang, page) {
