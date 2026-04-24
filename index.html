@@ -16,7 +16,7 @@
             --muted: #b0b0b0;
             --column-bg-es: rgba(255, 215, 0, 0.08);
             --column-bg-en: rgba(233, 69, 96, 0.08);
-            --moon-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='15' fill='none' stroke='%23ffd700' stroke-width='1' opacity='0.2'/%3E%3Cpath d='M25,20 Q30,15 35,20 T40,25 Q45,30 40,35 T35,40 Q30,45 25,40 T20,35 Q15,30 20,25 T25,20' fill='none' stroke='%23ffd700' stroke-width='1' opacity='0.2'/%3E%3C/svg%3E");
+            --moon-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='15' fill='none' stroke='%23ffd700' stroke-width='1' opacity='0.2'/%3E%3C/svg%3E");
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -32,7 +32,7 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 50px 25px;
-            background: #000000;
+            background: #000;
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
             border-radius: 25px;
             position: relative;
@@ -42,21 +42,17 @@
         header::before {
             content: "";
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
+            top: -50px; right: -50px;
+            width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%);
             border-radius: 50%;
         }
         header::after {
             content: "";
             position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0) 70%);
+            bottom: -30px; left: -30px;
+            width: 100px; height: 100px;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
             border-radius: 50%;
         }
         .moon-decoration {
@@ -67,28 +63,26 @@
             z-index: 1;
             filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
         }
-        .moon-1 { top: 15px; left: 5%; animation-delay: 0s; }
-        .moon-2 { top: 25px; right: 8%; animation-delay: 0.8s; }
-        .moon-3 { bottom: 20px; left: 10%; animation-delay: 1.6s; }
-        .moon-4 { bottom: 30px; right: 6%; animation-delay: 2.4s; }
-        .moon-5 { top: 40px; left: 25%; animation-delay: 3.2s; }
-        .moon-6 { bottom: 25px; right: 20%; animation-delay: 4s; }
-        .moon-7 { top: 15px; right: 30%; animation-delay: 0.4s; }
-        .moon-8 { bottom: 10px; left: 15%; animation-delay: 1.2s; }
-        .moon-9 { top: 60px; right: 25%; animation-delay: 2s; }
-        .moon-10 { bottom: 40px; left: 30%; animation-delay: 2.8s; }
-        
+        .moon-1  { top: 15px;    left: 5%;    animation-delay: 0s;   }
+        .moon-2  { top: 25px;    right: 8%;   animation-delay: 0.8s; }
+        .moon-3  { bottom: 20px; left: 10%;   animation-delay: 1.6s; }
+        .moon-4  { bottom: 30px; right: 6%;   animation-delay: 2.4s; }
+        .moon-5  { top: 40px;    left: 25%;   animation-delay: 3.2s; }
+        .moon-6  { bottom: 25px; right: 20%;  animation-delay: 4s;   }
+        .moon-7  { top: 15px;    right: 30%;  animation-delay: 0.4s; }
+        .moon-8  { bottom: 10px; left: 15%;   animation-delay: 1.2s; }
+        .moon-9  { top: 60px;    right: 25%;  animation-delay: 2s;   }
+        .moon-10 { bottom: 40px; left: 30%;   animation-delay: 2.8s; }
         @keyframes glow {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
+            0%, 100% { opacity: 0.7; transform: scale(1);   }
+            50%       { opacity: 1;   transform: scale(1.1); }
         }
-        
         header h1 {
             font-family: 'Poppins', sans-serif;
             font-size: 3.8rem;
             color: #ffd700;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 10px rgba(255, 215, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 10px rgba(255,215,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -98,16 +92,13 @@
             z-index: 2;
         }
         header h1 img {
-            height: 180px;
-            width: auto;
+            height: 180px; width: auto;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             border: 4px solid #ffd700;
             transition: transform 0.3s ease;
         }
-        header h1 img:hover {
-            transform: scale(1.05);
-        }
+        header h1 img:hover { transform: scale(1.05); }
         header p {
             color: #ffd700;
             font-size: 1.5rem;
@@ -120,15 +111,13 @@
         }
         #lang-toggle {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 20px; right: 20px;
             z-index: 999;
             background: var(--accent);
             color: #000;
             border: none;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 60px; height: 60px;
             font-size: 1.4rem;
             box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
             cursor: pointer;
@@ -137,11 +126,7 @@
             align-items: center;
             justify-content: center;
         }
-        #lang-toggle:hover {
-            transform: scale(1.1);
-            background: var(--secondary);
-            color: #fff;
-        }
+        #lang-toggle:hover { transform: scale(1.1); background: var(--secondary); color: #fff; }
         .columns-container {
             display: flex;
             flex-direction: column;
@@ -154,10 +139,9 @@
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            position: relative;
         }
         .column-es { display: block; background: var(--column-bg-es); }
-        .column-en { display: none; background: var(--column-bg-en); }
+        .column-en { display: none;  background: var(--column-bg-en); }
         .column-header {
             display: flex;
             align-items: center;
@@ -166,10 +150,10 @@
             padding-bottom: 10px;
             border-bottom: 2px solid;
         }
-        .column-es .column-header { border-color: var(--accent); }
-        .column-en .column-header { border-color: var(--secondary); }
+        .column-es .column-header { border-color: var(--accent);    }
+        .column-en .column-header { border-color: var(--secondary);  }
         .column-header h2 { font-size: 1.4rem; font-family: 'Poppins', sans-serif; }
-        .column-es h2 { color: var(--accent); }
+        .column-es h2 { color: var(--accent);   }
         .column-en h2 { color: var(--secondary); }
         .news-grid {
             display: grid;
@@ -191,33 +175,14 @@
             box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
             border-color: #ffd700;
         }
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 16px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card-content { padding: 16px; flex: 1; display: flex; flex-direction: column; }
         .card-content h3 { font-size: 1.1rem; margin-bottom: 8px; font-family: 'Poppins', sans-serif; color: #fff; }
-        .source { font-size: 0.85rem; color: var(--accent); margin-bottom: 8px; font-weight: 500; }
-        .date { font-size: 0.8rem; color: var(--secondary); margin-bottom: 8px; }
-        .description {
-            font-size: 0.9rem;
-            color: var(--muted);
-            margin-bottom: 12px;
-            flex-grow: 1;
-        }
-        .card-footer { margin-top: auto; display:flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-        .card-footer a {
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
+        .source      { font-size: 0.85rem; color: var(--accent);    margin-bottom: 8px; font-weight: 500; }
+        .date        { font-size: 0.8rem;  color: var(--secondary); margin-bottom: 8px; }
+        .description { font-size: 0.9rem;  color: var(--muted);     margin-bottom: 12px; flex-grow: 1; }
+        .card-footer { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .card-footer a { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
         .translate-btn {
             background-color: transparent;
             border: 1px solid var(--secondary);
@@ -228,7 +193,7 @@
             border-radius: 20px;
             transition: all 0.3s;
         }
-        .translate-btn:hover { background-color: var(--secondary); color: #fff; }
+        .translate-btn:hover    { background-color: var(--secondary); color: #fff; }
         .translate-btn:disabled { border-color: var(--muted); color: var(--muted); cursor: not-allowed; }
         .loading, .error-message, .no-more-news {
             text-align: center;
@@ -248,37 +213,8 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        #load-more:hover { background: var(--secondary); border-color:var(--secondary); color: #fff; }
-        #load-more:disabled { background: var(--muted); border-color: var(--muted); cursor: not-allowed; }
-        
-        /* Debug panel */
-        .debug-panel {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 12px;
-            max-width: 300px;
-            z-index: 1000;
-            display: none;
-        }
-        .debug-panel.show { display: block; }
-        .debug-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        
+        #load-more:hover    { background: var(--secondary); border-color: var(--secondary); color: #fff; }
+        #load-more:disabled { background: var(--muted);     border-color: var(--muted);     cursor: not-allowed; }
         @media (min-width: 768px) {
             .columns-container { flex-direction: row; }
             .column { flex: 1; }
@@ -290,12 +226,6 @@
     </style>
 </head>
 <body>
-    <button class="debug-toggle" onclick="toggleDebug()">Debug</button>
-    <div class="debug-panel" id="debug-panel">
-        <h4>Filtros Aplicados:</h4>
-        <div id="debug-content"></div>
-    </div>
-
     <header>
         <div class="moon-decoration moon-1">🌕</div>
         <div class="moon-decoration moon-2">🌖</div>
@@ -323,7 +253,6 @@
                 <div class="loading"><i class="fas fa-spinner fa-spin"></i> Buscando noticias...</div>
             </div>
         </div>
-
         <div class="column column-en">
             <div class="column-header">
                 <i class="fas fa-flag-usa"></i><h2>English News</h2>
@@ -334,355 +263,226 @@
         </div>
     </div>
 
-    <button id="load-more" class="load-more">Cargar más</button>
-
+    <button id="load-more">Cargar más</button>
     <button id="lang-toggle" title="Cambiar idioma"><i class="fas fa-language"></i></button>
 
     <script>
+        // ── Configuración ────────────────────────────────────────────────────────
         const API_KEYS = {
             NEWSAPI: 'aaf83dcbd8694668ad89247b959db678',
-            GNEWS: '42dd93284a0abf72a9a646d3b4a9c33e'
-        };
-        
-        // ✅ PROXY CORS GRATUITO ACTUALIZADO
-        const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
-        
-        // FILTRO MEJORADO - Keywords específicos para gatos
-        const catKeywords = {
-            positive: {
-                es: [
-                    // Palabras directas sobre gatos
-                    'gato', 'gatos', 'felino', 'felinos', 'gatito', 'gatitos', 'minino', 'mininos',
-                    'mascota felina', 'mascotas felinas', 'animal doméstico', 'animales domésticos',
-                    // Razas específicas
-                    'persa', 'siamés', 'maine coon', 'bengalí', 'ragdoll', 'british shorthair',
-                    'abisinio', 'scottish fold', 'sphynx', 'birmano', 'angora',
-                    // Cuidados y salud
-                    'veterinario felino', 'salud felina', 'alimentación gatos', 'comida para gatos',
-                    'arena para gatos', 'juguetes para gatos', 'rascador', 'caja de arena',
-                    // Comportamiento
-                    'ronroneo', 'maullido', 'arañar', 'trepar', 'cazar ratones', 'pelota de pelo'
-                ],
-                en: [
-                    // Palabras directas
-                    'cat', 'cats', 'feline', 'felines', 'kitten', 'kittens', 'kitty', 'kitties',
-                    'pet cat', 'pet cats', 'house cat', 'domestic cat',
-                    // Razas
-                    'persian', 'siamese', 'maine coon', 'bengal', 'ragdoll', 'british shorthair',
-                    'abyssinian', 'scottish fold', 'sphynx', 'birman', 'angora',
-                    // Cuidados
-                    'cat veterinarian', 'feline health', 'cat food', 'cat feeding', 'litter box',
-                    'cat toys', 'scratching post', 'cat care', 'cat grooming',
-                    // Comportamiento
-                    'purring', 'meowing', 'scratching', 'climbing', 'hunting mice', 'hairball'
-                ]
-            },
-            negative: {
-                es: [
-                    // Deportes y equipos
-                    'fútbol', 'soccer', 'basketball', 'béisbol', 'tennis', 'golf', 'hockey',
-                    'equipo', 'partido', 'liga', 'campeonato', 'torneo', 'estadio',
-                    // Música y entretenimiento
-                    'canción', 'música', 'álbum', 'concierto', 'banda', 'cantante', 'artista',
-                    'película', 'cine', 'actor', 'actriz', 'serie', 'televisión',
-                    // Lugares y geografía (cuando no es contexto de gatos)
-                    'ciudad', 'país', 'provincia', 'estado', 'región', 'continente',
-                    'gobierno', 'político', 'elecciones', 'presidente', 'ministro',
-                    // Tecnología sin relación
-                    'smartphone', 'computadora', 'software', 'aplicación', 'internet',
-                    'cryptocurrency', 'bitcoin', 'blockchain',
-                    // Negocios generales
-                    'empresa', 'corporación', 'mercado', 'finanzas', 'economía', 'bolsa'
-                ],
-                en: [
-                    // Deportes
-                    'football', 'soccer', 'basketball', 'baseball', 'tennis', 'golf', 'hockey',
-                    'team', 'game', 'league', 'championship', 'tournament', 'stadium',
-                    // Música
-                    'song', 'music', 'album', 'concert', 'band', 'singer', 'artist',
-                    'movie', 'film', 'actor', 'actress', 'series', 'television',
-                    // Lugares
-                    'city', 'country', 'state', 'region', 'continent',
-                    'government', 'political', 'election', 'president', 'minister',
-                    // Tecnología
-                    'smartphone', 'computer', 'software', 'application', 'internet',
-                    'cryptocurrency', 'bitcoin', 'blockchain',
-                    // Negocios
-                    'company', 'corporation', 'market', 'finance', 'economy', 'stock'
-                ]
-            }
+            GNEWS:   '42dd93284a0abf72a9a646d3b4a9c33e'
         };
 
-        // Debug
-        let debugInfo = [];
-        
-        function toggleDebug() {
-            const panel = document.getElementById('debug-panel');
-            panel.classList.toggle('show');
-        }
+        // corsproxy.io funciona desde GitHub Pages (origin HTTP real, no file://)
+        const CORS_PROXY = 'https://corsproxy.io/?';
 
-        function addDebugInfo(info) {
-            debugInfo.push(info);
-            if (debugInfo.length > 20) debugInfo.shift();
-            
-            const content = document.getElementById('debug-content');
-            content.innerHTML = debugInfo.map(info => `
-                <div style="margin: 5px 0; padding: 5px; border-left: 3px solid ${info.passed ? '#4CAF50' : '#f44336'};">
-                    <strong>${info.passed ? '✓' : '✗'} ${info.title}</strong><br>
-                    <small>${info.reason}</small>
-                </div>
-            `).join('');
-        }
-        
+        const RSS_FEEDS = {
+            es: 'https://www.actualidadanimal.com/feed/',
+            en: 'https://iheartcats.com/feed/'
+        };
+
+        const catKeywords = [
+            'gato', 'gatos', 'felino', 'felinos', 'gatito', 'gatitos', 'minino',
+            'cat', 'cats', 'feline', 'felines', 'kitten', 'kittens', 'kitty',
+            'persa', 'siamés', 'siamese', 'maine coon', 'bengal', 'ragdoll',
+            'scottish fold', 'sphynx', 'abisinio', 'abyssinian', 'birman', 'angora',
+            'pet cat', 'house cat', 'mascota felina', 'litter box', 'scratching post',
+            'cat food', 'cat care', 'feline health', 'ronroneo', 'maullido', 'purr', 'meow'
+        ];
+
+        // ── Estado y DOM ─────────────────────────────────────────────────────────
         const DOM = {
-            newsEs: document.getElementById('news-es'),
-            newsEn: document.getElementById('news-en'),
-            colEs: document.querySelector('.column-es'),
-            colEn: document.querySelector('.column-en'),
-            loadMoreBtn: document.getElementById('load-more'),
-            langToggleBtn: document.getElementById('lang-toggle'),
+            newsEs:       document.getElementById('news-es'),
+            newsEn:       document.getElementById('news-en'),
+            colEs:        document.querySelector('.column-es'),
+            colEn:        document.querySelector('.column-en'),
+            loadMoreBtn:  document.getElementById('load-more'),
+            langToggleBtn:document.getElementById('lang-toggle')
         };
 
         const state = {
-            page: { es: 1, en: 1 },
-            viewMode: 'es',
-            isLoading: false,
-            seenIds: new Set(),
+            page:          { es: 1, en: 1 },
+            viewMode:      'es',
+            isLoading:     false,
+            seenIds:       new Set(),
             allNewsLoaded: { es: false, en: false },
+            rssFallback:   { es: false, en: false }
         };
 
+        // ── Helpers ──────────────────────────────────────────────────────────────
         function getArticleId(article) {
             return (article.title || '').substring(0, 50).toLowerCase();
         }
 
-        // FUNCIÓN DE FILTRADO MEJORADA
-        function isCatRelated(article, lang = 'es') {
-            const title = (article.title || '').toLowerCase();
-            const description = (article.description || '').toLowerCase();
-            const text = title + ' ' + description;
-            
-            // Debug info
-            const debugTitle = article.title || 'Sin título';
-            
-            // 1. Verificar palabras negativas (descarta inmediatamente)
-            const negativeWords = catKeywords.negative[lang] || catKeywords.negative.es;
-            const hasNegative = negativeWords.some(word => text.includes(word.toLowerCase()));
-            
-            if (hasNegative) {
-                const foundNegative = negativeWords.find(word => text.includes(word.toLowerCase()));
-                addDebugInfo({
-                    title: debugTitle,
-                    passed: false,
-                    reason: `Contiene palabra negativa: "${foundNegative}"`
-                });
-                return false;
-            }
-
-            // 2. Verificar palabras positivas (debe tener al menos una)
-            const positiveWords = catKeywords.positive[lang] || catKeywords.positive.es;
-            const hasPositive = positiveWords.some(word => text.includes(word.toLowerCase()));
-
-            if (!hasPositive) {
-                addDebugInfo({
-                    title: debugTitle,
-                    passed: false,
-                    reason: 'No contiene palabras relacionadas con gatos'
-                });
-                return false;
-            }
-
-            // 3. Verificaciones adicionales para evitar falsos positivos
-            
-            // Evitar artículos sobre empresas/marcas que solo mencionan "cat" como nombre
-            const businessIndicators = ['inc.', 'corp.', 'ltd.', 'llc.', 'company', 'empresa', 'corporation'];
-            if (businessIndicators.some(indicator => text.includes(indicator)) && !text.includes('pet') && !text.includes('mascota')) {
-                addDebugInfo({
-                    title: debugTitle,
-                    passed: false,
-                    reason: 'Parece ser sobre empresa/negocio, no gatos reales'
-                });
-                return false;
-            }
-
-            // Evitar artículos sobre lugares que solo contienen "cat" en el nombre
-            if ((text.includes('avenue') || text.includes('street') || text.includes('road') || 
-                 text.includes('avenida') || text.includes('calle') || text.includes('carretera')) && 
-                !text.includes('pet') && !text.includes('animal') && !text.includes('mascota')) {
-                addDebugInfo({
-                    title: debugTitle,
-                    passed: false,
-                    reason: 'Parece ser sobre ubicación geográfica'
-                });
-                return false;
-            }
-
-            // Verificar contexto positivo más fuerte
-            const strongCatContext = [
-                'pet', 'animal', 'mascota', 'veterinary', 'veterinario', 'adopt', 'rescue',
-                'shelter', 'refugio', 'breed', 'raza', 'meow', 'purr', 'miau', 'ronroneo'
-            ];
-            
-            const hasStrongContext = strongCatContext.some(word => text.includes(word.toLowerCase()));
-
-            if (hasStrongContext) {
-                const foundContext = strongCatContext.find(word => text.includes(word.toLowerCase()));
-                addDebugInfo({
-                    title: debugTitle,
-                    passed: true,
-                    reason: `✓ Contexto fuerte de gatos: "${foundContext}"`
-                });
-                return true;
-            }
-
-            // Si tiene palabra positiva pero no contexto fuerte, verificar más estrictamente
-            const foundPositive = positiveWords.find(word => text.includes(word.toLowerCase()));
-            
-            // Si es solo "cat" o "gato", ser más estricto
-            if ((foundPositive === 'cat' || foundPositive === 'gato') && text.length > 200) {
-                // Para artículos largos con solo "cat/gato", verificar densidad
-                const wordCount = text.split(' ').length;
-                const catMentions = (text.match(/\bcat\b|\bgato\b/g) || []).length;
-                const density = catMentions / wordCount;
-                
-                if (density < 0.02) { // Menos del 2% de densidad
-                    addDebugInfo({
-                        title: debugTitle,
-                        passed: false,
-                        reason: `Baja densidad de menciones felinas (${(density*100).toFixed(1)}%)`
-                    });
-                    return false;
-                }
-            }
-
-            addDebugInfo({
-                title: debugTitle,
-                passed: true,
-                reason: `✓ Contiene: "${foundPositive}"`
-            });
-            
-            return true;
+        function isCatRelated(article) {
+            const text = (article.title + ' ' + (article.description || '')).toLowerCase();
+            return catKeywords.some(kw => text.includes(kw));
         }
 
-        // ✅ GNEWS CON PROXY CORS
+        const catImages = [
+            'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=250&fit=crop&auto=format&q=80',
+            'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=400&h=250&fit=crop&auto=format&q=80',
+            'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=250&fit=crop&auto=format&q=80'
+        ];
+        const getCatImageUrl = () => catImages[Math.floor(Math.random() * catImages.length)];
+
+        // ── Fuentes ──────────────────────────────────────────────────────────────
         async function fetchFromGNews(lang, page) {
             try {
                 const query = lang === 'es' ? 'gato OR felino' : 'cat OR feline';
                 const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=${lang}&page=${page}&max=10&apikey=${API_KEYS.GNEWS}`;
                 const res = await fetch(CORS_PROXY + encodeURIComponent(url));
+                if (!res.ok) throw new Error(`GNews failed: ${res.status}`);
                 const data = await res.json();
                 return data.articles?.map(art => ({ ...art, urlToImage: art.image })) || [];
-            } catch (e) { 
-                console.error('Error GNews:', e);
-                return []; 
+            } catch (e) {
+                console.error('GNews error:', e);
+                return [];
             }
         }
 
-        // ✅ NEWSAPI CON PROXY CORS
         async function fetchFromNewsAPI(lang, page) {
             try {
                 const query = lang === 'es' ? 'gato OR gatito' : 'cat OR kitten';
                 const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=${lang}&page=${page}&pageSize=20&sortBy=publishedAt&apiKey=${API_KEYS.NEWSAPI}`;
                 const res = await fetch(CORS_PROXY + encodeURIComponent(url));
+                if (!res.ok) throw new Error(`NewsAPI failed: ${res.status}`);
                 const data = await res.json();
                 return data.articles || [];
-            } catch (e) { 
-                console.error('Error NewsAPI:', e);
-                return []; 
+            } catch (e) {
+                console.error('NewsAPI error:', e);
+                return [];
             }
         }
 
+        async function fetchFromRSS(lang) {
+            try {
+                const rssUrl = RSS_FEEDS[lang];
+                if (!rssUrl) return [];
+                const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
+                if (!res.ok) throw new Error(`RSS failed: ${res.status}`);
+                const data = await res.json();
+                if (!data.items || data.items.length === 0) throw new Error('Feed vacío');
+                console.log('RSS OK:', rssUrl);
+                return data.items.map(item => ({
+                    title:       item.title,
+                    description: (item.description || '').replace(/<[^>]*>?/gm, '').substring(0, 200) + '...',
+                    url:         item.link,
+                    urlToImage:  item.thumbnail || null,
+                    publishedAt: item.pubDate,
+                    source:      { name: data.feed.title || 'RSS' }
+                }));
+            } catch (e) {
+                console.error('RSS error:', e);
+                return [];
+            }
+        }
+
+        // ── Orquestador ──────────────────────────────────────────────────────────
         async function fetchAllNews(lang, page) {
-            const [gnews, newsapi] = await Promise.all([
+            if (state.rssFallback[lang]) return [];
+
+            const apiResults = await Promise.allSettled([
                 fetchFromGNews(lang, page),
-                fetchFromNewsAPI(lang, page),
+                fetchFromNewsAPI(lang, page)
             ]);
 
-            const combined = [...gnews, ...newsapi];
-            const unique = combined.filter(art => {
+            let combined = [];
+            apiResults.forEach(result => {
+                if (result.status === 'fulfilled' && Array.isArray(result.value)) {
+                    combined.push(...result.value);
+                }
+            });
+
+            let unique = combined.filter(art => {
                 const id = getArticleId(art);
-                if (!art.title || !art.url || !art.publishedAt || state.seenIds.has(id)) {
+                if (!art.title || !art.url || !art.publishedAt || state.seenIds.has(id) || !isCatRelated(art)) {
                     return false;
                 }
-                
-                // Aplicar filtro mejorado
-                if (!isCatRelated(art, lang)) {
-                    return false;
-                }
-                
                 state.seenIds.add(id);
                 return true;
             });
-            
+
+            // Si las APIs no devuelven nada, activar RSS de respaldo
+            if (unique.length === 0) {
+                console.warn(`APIs sin resultados para '${lang}'. Intentando RSS...`);
+                unique = await fetchFromRSS(lang);
+                state.rssFallback[lang] = true;
+            }
+
             return unique.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
         }
-        
-        const getCatImageUrl = () => {
-            const catImages = [
-                'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=250&fit=crop&auto=format&q=80',
-                'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=400&h=250&fit=crop&auto=format&q=80',
-                'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=250&fit=crop&auto=format&q=80'
-            ];
-            return catImages[Math.floor(Math.random() * catImages.length)];
-        }
 
+        // ── Renderizado ──────────────────────────────────────────────────────────
         function renderArticles(articles, container, lang) {
             if (container.querySelector('.loading')) container.innerHTML = '';
-            if (articles.length === 0 && container.innerHTML === '') {
-                 container.innerHTML = '<div class="no-more-news">No se encontraron más noticias.</div>';
-                 state.allNewsLoaded[lang] = true;
-                 updateLoadMoreButton();
-                 return;
+
+            if (articles.length === 0) {
+                if (container.innerHTML !== '') {
+                    if (!container.querySelector('.no-more-news')) {
+                        const noMore = document.createElement('div');
+                        noMore.className = 'no-more-news';
+                        noMore.textContent = 'No se encontraron más noticias.';
+                        container.appendChild(noMore);
+                    }
+                } else {
+                    container.innerHTML = '<div class="error-message">No se pudieron cargar noticias. Inténtalo más tarde.</div>';
+                }
+                state.allNewsLoaded[lang] = true;
+                updateLoadMoreButton();
+                return;
             }
-            
+
             const fragment = document.createDocumentFragment();
             articles.forEach(art => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                const date = new Date(art.publishedAt).toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'long' });
-
+                const date = new Date(art.publishedAt).toLocaleDateString(
+                    lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'long' }
+                );
+                const fallback = getCatImageUrl();
                 const translateBtnHtml = lang === 'en' ? `
                     <button class="translate-btn"
                             data-title="${(art.title || '').replace(/"/g, '&quot;')}"
                             data-desc="${(art.description || '').replace(/"/g, '&quot;')}">
                         <i class="fas fa-language"></i> Traducir
-                    </button>
-                ` : '';
+                    </button>` : '';
 
                 card.innerHTML = `
-                    <img src="${art.urlToImage || getCatImageUrl()}" alt="${art.title}" loading="lazy" onerror="this.src='${getCatImageUrl()}'">
+                    <img src="${art.urlToImage || fallback}" alt="${art.title}" loading="lazy" onerror="this.src='${fallback}'">
                     <div class="card-content">
                         <span class="date"><i class="fas fa-calendar-alt"></i> ${date}</span>
                         <h3>${art.title}</h3>
-                        <div class="source"><i class="fas fa-paw"></i> ${art.source.name || 'Fuente desconocida'}</div>
+                        <div class="source"><i class="fas fa-paw"></i> ${art.source?.name || 'Fuente desconocida'}</div>
                         ${art.description ? `<div class="description">${art.description}</div>` : ''}
                         <div class="card-footer">
                             ${translateBtnHtml}
-                            <a href="${art.url}" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Leer más</a>
+                            <a href="${art.url}" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> Leer más
+                            </a>
                         </div>
-                    </div>
-                `;
+                    </div>`;
                 fragment.appendChild(card);
             });
             container.appendChild(fragment);
         }
-        
+
+        // ── Traducción ───────────────────────────────────────────────────────────
         async function handleTranslation(event) {
-            if (!event.target.classList.contains('translate-btn')) return;
-            const btn = event.target;
-            const card = btn.closest('.card');
+            const btn = event.target.closest('.translate-btn');
+            if (!btn) return;
+            const card    = btn.closest('.card');
             const titleEl = card.querySelector('h3');
-            const descEl = card.querySelector('.description');
-            
-            btn.disabled = true;
+            const descEl  = card.querySelector('.description');
+            btn.disabled  = true;
             btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
-            
             try {
                 const text = `${btn.dataset.title} ||| ${btn.dataset.desc}`;
-                const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|es`);
+                const res  = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|es`);
                 const data = await res.json();
                 const [translatedTitle, translatedDesc] = data.responseData.translatedText.split(' ||| ');
                 if (titleEl && translatedTitle) titleEl.textContent = translatedTitle.trim();
-                if (descEl && translatedDesc) descEl.textContent = translatedDesc.trim();
+                if (descEl  && translatedDesc)  descEl.textContent  = translatedDesc.trim();
                 btn.innerHTML = `<i class="fas fa-check"></i> Traducido`;
             } catch (e) {
                 btn.innerHTML = `<i class="fas fa-times"></i> Error`;
@@ -690,63 +490,63 @@
             }
         }
 
+        // ── Carga ────────────────────────────────────────────────────────────────
         async function loadNews(isInitial = false) {
-             if (state.isLoading) return;
-             state.isLoading = true;
-             DOM.loadMoreBtn.disabled = true;
-             DOM.loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cargando...';
+            if (state.isLoading) return;
+            state.isLoading = true;
+            DOM.loadMoreBtn.disabled = true;
+            DOM.loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cargando...';
 
-             const loadForLang = async (lang) => {
-                 if (state.allNewsLoaded[lang]) return;
-                 const news = await fetchAllNews(lang, state.page[lang]);
-                 renderArticles(news, lang === 'es' ? DOM.newsEs : DOM.newsEn, lang);
-                 if (news.length > 0) {
-                     state.page[lang]++;
-                 } else {
-                     state.allNewsLoaded[lang] = true;
-                 }
-             };
+            const loadForLang = async (lang) => {
+                if (state.allNewsLoaded[lang]) return;
+                const news = await fetchAllNews(lang, state.page[lang]);
+                renderArticles(news, lang === 'es' ? DOM.newsEs : DOM.newsEn, lang);
+                if (news.length > 0 && !state.rssFallback[lang]) {
+                    state.page[lang]++;
+                } else {
+                    state.allNewsLoaded[lang] = true;
+                }
+            };
 
-             if (isInitial) {
-                 await Promise.all([loadForLang('es'), loadForLang('en')]);
-             } else {
-                 if (state.viewMode === 'es') await loadForLang('es');
-                 else if (state.viewMode === 'en') await loadForLang('en');
-                 else if (state.viewMode === 'both') {
-                     await Promise.all([
+            if (isInitial) {
+                await Promise.all([loadForLang('es'), loadForLang('en')]);
+            } else {
+                if      (state.viewMode === 'es')   await loadForLang('es');
+                else if (state.viewMode === 'en')   await loadForLang('en');
+                else if (state.viewMode === 'both') {
+                    await Promise.all([
                         DOM.colEs.style.display !== 'none' && loadForLang('es'),
                         DOM.colEn.style.display !== 'none' && loadForLang('en')
-                     ]);
-                 }
-             }
+                    ].filter(Boolean));
+                }
+            }
 
-             state.isLoading = false;
-             DOM.loadMoreBtn.disabled = false;
-             DOM.loadMoreBtn.innerHTML = 'Cargar más';
-             updateLoadMoreButton();
+            state.isLoading = false;
+            DOM.loadMoreBtn.disabled = false;
+            DOM.loadMoreBtn.innerHTML = 'Cargar más';
+            updateLoadMoreButton();
         }
 
         function updateLoadMoreButton() {
             let canLoadMore = false;
-            if (state.viewMode === 'es') canLoadMore = !state.allNewsLoaded.es;
-            else if (state.viewMode === 'en') canLoadMore = !state.allNewsLoaded.en;
+            if      (state.viewMode === 'es')   canLoadMore = !state.allNewsLoaded.es;
+            else if (state.viewMode === 'en')   canLoadMore = !state.allNewsLoaded.en;
             else if (state.viewMode === 'both') canLoadMore = !state.allNewsLoaded.es || !state.allNewsLoaded.en;
-
             DOM.loadMoreBtn.style.display = canLoadMore ? 'block' : 'none';
         }
-        
+
         function updateView() {
             DOM.colEs.style.display = (state.viewMode === 'es' || state.viewMode === 'both') ? 'block' : 'none';
             DOM.colEn.style.display = (state.viewMode === 'en' || state.viewMode === 'both') ? 'block' : 'none';
             updateLoadMoreButton();
         }
 
+        // ── Eventos ──────────────────────────────────────────────────────────────
         DOM.loadMoreBtn.addEventListener('click', () => loadNews(false));
         DOM.newsEn.addEventListener('click', handleTranslation);
         DOM.langToggleBtn.addEventListener('click', () => {
-            if (state.viewMode === 'es') state.viewMode = 'en';
-            else if (state.viewMode === 'en') state.viewMode = 'both';
-            else state.viewMode = 'es';
+            const modes = ['es', 'en', 'both'];
+            state.viewMode = modes[(modes.indexOf(state.viewMode) + 1) % modes.length];
             updateView();
         });
 
