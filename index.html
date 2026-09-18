@@ -268,17 +268,16 @@
 
     <script>
         // ── Configuración ────────────────────────────────────────────────────────
-        const API_KEYS = {
-            NEWSAPI: 'aaf83dcbd8694668ad89247b959db678',
-            GNEWS:   '42dd93284a0abf72a9a646d3b4a9c33e'
-        };
-
-        // corsproxy.io funciona desde GitHub Pages (origin HTTP real, no file://)
-        const CORS_PROXY = 'https://corsproxy.io/?';
+        const PROXY = 'https://noticias-proxy.esperance.workers.dev';
 
         const RSS_FEEDS = {
-            es: 'https://www.actualidadanimal.com/feed/',
-            en: 'https://iheartcats.com/feed/'
+            es: [
+                'https://misanimales.com/feed/'
+            ],
+            en: [
+                'https://iheartcats.com/feed/',
+                'https://www.catster.com/feed/'
+            ]
         };
 
         const catKeywords = [
@@ -330,8 +329,7 @@
         async function fetchFromGNews(lang, page) {
             try {
                 const query = lang === 'es' ? 'gato OR felino' : 'cat OR feline';
-                const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=${lang}&page=${page}&max=10&apikey=${API_KEYS.GNEWS}`;
-                const res = await fetch(CORS_PROXY + encodeURIComponent(url));
+                const res = await fetch(`${PROXY}/gnews?q=${encodeURIComponent(query)}&lang=${lang}`);
                 if (!res.ok) throw new Error(`GNews failed: ${res.status}`);
                 const data = await res.json();
                 return data.articles?.map(art => ({ ...art, urlToImage: art.image })) || [];
@@ -344,8 +342,7 @@
         async function fetchFromNewsAPI(lang, page) {
             try {
                 const query = lang === 'es' ? 'gato OR gatito' : 'cat OR kitten';
-                const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=${lang}&page=${page}&pageSize=20&sortBy=publishedAt&apiKey=${API_KEYS.NEWSAPI}`;
-                const res = await fetch(CORS_PROXY + encodeURIComponent(url));
+                const res = await fetch(`${PROXY}/newsapi?q=${encodeURIComponent(query)}&lang=${lang}`);
                 if (!res.ok) throw new Error(`NewsAPI failed: ${res.status}`);
                 const data = await res.json();
                 return data.articles || [];
@@ -356,26 +353,33 @@
         }
 
         async function fetchFromRSS(lang) {
-            try {
-                const rssUrl = RSS_FEEDS[lang];
-                if (!rssUrl) return [];
-                const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-                if (!res.ok) throw new Error(`RSS failed: ${res.status}`);
-                const data = await res.json();
-                if (!data.items || data.items.length === 0) throw new Error('Feed vacío');
-                console.log('RSS OK:', rssUrl);
-                return data.items.map(item => ({
-                    title:       item.title,
-                    description: (item.description || '').replace(/<[^>]*>?/gm, '').substring(0, 200) + '...',
-                    url:         item.link,
-                    urlToImage:  item.thumbnail || null,
-                    publishedAt: item.pubDate,
-                    source:      { name: data.feed.title || 'RSS' }
-                }));
-            } catch (e) {
-                console.error('RSS error:', e);
-                return [];
-            }
+            const feeds = RSS_FEEDS[lang] || [];
+            const lotes = await Promise.allSettled(feeds.map(async (rssUrl) => {
+                const res = await fetch(`${PROXY}/rss?url=${encodeURIComponent(rssUrl)}`);
+                if (!res.ok) throw new Error(`RSS ${res.status}`);
+                const xml = new DOMParser().parseFromString(await res.text(), "application/xml");
+                if (xml.querySelector("parsererror")) throw new Error("XML no válido");
+                const fuente = xml.querySelector("channel > title, feed > title")?.textContent || "RSS";
+                return [...xml.querySelectorAll("item, entry")].map(it => {
+                    const desc = it.querySelector("description, summary, content")?.textContent || "";
+                    const link = it.querySelector("link")?.getAttribute("href")
+                              || it.querySelector("link")?.textContent || "";
+                    const medio = it.getElementsByTagName("media:content")[0]
+                              || it.getElementsByTagName("media:thumbnail")[0]
+                              || it.getElementsByTagName("enclosure")[0];
+                    const img = medio?.getAttribute("url")
+                              || (desc.match(/<img[^>]+src=["\']([^"\']+)/i) || [])[1] || null;
+                    return {
+                        title:       it.querySelector("title")?.textContent || "",
+                        description: desc.replace(/<[^>]*>?/gm, "").trim().substring(0, 200) + "...",
+                        url:         link,
+                        urlToImage:  img,
+                        publishedAt: it.querySelector("pubDate, updated, published")?.textContent || "",
+                        source:      { name: fuente }
+                    };
+                });
+            }));
+            return lotes.filter(r => r.status === "fulfilled").flatMap(r => r.value);
         }
 
         // ── Orquestador ──────────────────────────────────────────────────────────
